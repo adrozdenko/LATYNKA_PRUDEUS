@@ -1,5 +1,5 @@
 {
-  "name": "LATYNKA_PRUDEUS",
+  "name": "UKRAINIAN_LATYNKA_PRUDEUS",
   "version": "1.0.0",
   "description": "This app transforms ukrainian cyrilics text in to latin transcripted text proposed by Maksym Prudeus",
   "main": "script.js",
