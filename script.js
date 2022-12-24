@@ -17,7 +17,7 @@ outputForm.addEventListener('submit', function(event) {
     copyTextarea.focus();
     copyTextarea.select();
     navigator.clipboard.writeText(copyTextarea.value);
-  });
+});
 
 
 
