@@ -1,5 +1,5 @@
 import translitEngine from 'translitit-engine';
-import {table} from './lib/translitit-cyrillic-ukrainian-to-latin-prudeus'
+import {table} from './lib/prudeus-ua-table'
 const inputForm = document.querySelector('#input_form');
 const outputForm = document.querySelector('#output_form');
 const transliterate = translitEngine(table)
