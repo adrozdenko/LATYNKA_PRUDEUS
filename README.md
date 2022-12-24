@@ -1,29 +1,33 @@
 Ukrainian Cyrillic to Latin Transliteration
 =====================================================
-A JavaScript function that transliterate strings from cyrillic ukrainian to latin proposed by Maksym Prudeus. Full proposal [Українська латинка: усі "за" та "проти" | Кирилиця чи латиниця | Абетка та розкладка клавіатури]:[cyrylics-or-latin]
+Application that transliterate text from cyrillic ukrainian to latin proposed by Maksym Prudeus. [Full proposal video]
 
 This project is build using the [translitit-engine][translitit-engine].
 
-The motivation for this project was to facilitate transition from current cyrilics alphabet to latin version proposed by Maksym Prudeus on his channel.
+The motivation for this project was to facilitate transition from current cyrilics alphabet to latin version proposed by Maksym Prudeus on his [channel].
 
 [translitit-engine]: https://github.com/gausby/translitit-engine
-[cyrylics-or-latin]:https://youtube.com/watch?v=nHeE2x2UNw4&feature=shares
+[Full proposal video]:https://youtube.com/watch?v=nHeE2x2UNw4&feature=shares
+[channel]:https://www.youtube.com/@maksymprudeus
 
 ## Installation and Usage
 Open terminal and run these commands
+    yarn init 
 
     yarn install
 
     yarn start
 
 After running yarn commands, open index.html with any browser. 
+
 UI is self explanatory.
+
 Enjoy :)
 
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2013 Andrii Drozdenko
+Copyright (c) 2022 Andrii Drozdenko
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
