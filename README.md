@@ -12,6 +12,7 @@ The motivation for this project was to facilitate transition from current cyrili
 
 ## Installation and Usage
 Open terminal and run these commands
+
     yarn init 
 
     yarn install
