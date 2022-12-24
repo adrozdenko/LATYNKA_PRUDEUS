@@ -1,0 +1,18 @@
+{
+  "name": "LATYNKA_PRUDEUS",
+  "version": "1.0.0",
+  "description": "This app transforms ukrainian cyrilics text in to latin transcripted text proposed by Maksym Prudeus",
+  "main": "script.js",
+  "author": "Andrii Drozdenko <adrozdenko@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "translitit-engine": "0.1.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.2"
+  }
+}
