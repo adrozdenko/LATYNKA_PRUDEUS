@@ -1,5 +1,6 @@
 import translitEngine from 'translitit-engine';
 import {table} from './lib/prudeus-ua-table'
+
 const inputForm = document.querySelector('#input_form');
 const outputForm = document.querySelector('#output_form');
 const transliterate = translitEngine(table)
@@ -11,7 +12,7 @@ inputForm.addEventListener('submit', e => {
     outputForm.querySelector('#output_text').value = transcription
 })
 
-outputForm.addEventListener('submit', function(event) {
+outputForm.addEventListener('submit', e => {
     event.preventDefault();
     const copyTextarea = event.target.querySelector("#output_text");
     copyTextarea.focus();
