@@ -533,12 +533,12 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"6rimH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _translititEngine = require("translitit-engine");
-var _translititEngineDefault = parcelHelpers.interopDefault(_translititEngine);
+var _translititEngineJs = require("./node_modules/translitit-engine/lib/translitit-engine.js");
+var _translititEngineJsDefault = parcelHelpers.interopDefault(_translititEngineJs);
 var _prudeusUaTable = require("./lib/prudeus-ua-table");
 const inputForm = document.querySelector("#input_form");
 const outputForm = document.querySelector("#output_form");
-const transliterate = (0, _translititEngineDefault.default)((0, _prudeusUaTable.table));
+const transliterate = (0, _translititEngineJsDefault.default)((0, _prudeusUaTable.table));
 inputForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     const inputText = e.target.querySelector("#input_text").value;
@@ -553,73 +553,7 @@ outputForm.addEventListener("submit", (e)=>{
     navigator.clipboard.writeText(copyTextarea.value);
 });
 
-},{"translitit-engine":"iqGBd","./lib/prudeus-ua-table":"8KA6J","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iqGBd":[function(require,module,exports) {
-/* global module */ "use strict";
-/**
- * Generate a transliteration function from a given transliteration
- * table object.
- *
- * @param [Object] table
- * @return [Function] function that transliterates its input
- */ module.exports = function(table) {
-    var keys, specialCases, singleLetter, searchPattern, lookupTable, i = 0;
-    // If no transliteration table is given, return a function that will
-    // return the input.
-    if (!table) return function(subject) {
-        return subject;
-    };
-    // Function used by the resulting replace function
-    lookupTable = function(input) {
-        return input in table ? table[input] : input;
-    };
-    // Fetch and sort the keys in the translitteration table object, to
-    // ensure the longest keys in the table is first in the array. Then
-    // it will find the position of the first one-letter index and split
-    // the keys into single letter indexes and longer 'specialCases.'
-    keys = Object.keys(table).sort(function(a, b) {
-        return b.length - a.length;
-    });
-    for(; keys[i]; i += 1){
-        if (keys[i].length === 1) break; // first one-letter index has been found, break out
-    }
-    specialCases = keys.slice(0, i).join("|");
-    singleLetter = keys.slice(i).join("");
-    keys = undefined; // reset keys
-    // Compile a regular expression using the keys found in the given
-    // translitteration object.
-    //
-    // specialCases are joined together with a pipe; `|`
-    // singleLetters joined together and wrapped in square brackets so
-    // that the resulting regular expressing have the following format:
-    //
-    //     /aa|bb|cc|[abc]/g
-    //
-    // This should create a working regular expression that will look
-    // for every key in the transliteration table.
-    searchPattern = new RegExp([
-        specialCases,
-        singleLetter ? "[" + singleLetter + "]" : ""
-    ].join(singleLetter && specialCases ? "|" : ""), "g");
-    /**
-     * Search for occurrences of entries in the translitteration table
-     * and replace these with their corresponding values.
-     *
-     * @param [String] subject to transliterate.
-     * @return [String] transliterated string
-     */ return function(subject) {
-        // input sanity check, we expect a string
-        if (typeof subject !== "string") {
-            // Try to run toString, if it exist
-            if (subject && typeof subject.toString === "function") subject = subject.toString();
-            else return "";
-        }
-        // Replace letters in the input using the lookup table and the
-        // compiled search pattern.
-        return subject.replace(searchPattern, lookupTable);
-    };
-};
-
-},{}],"8KA6J":[function(require,module,exports) {
+},{"./lib/prudeus-ua-table":"8KA6J","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./node_modules/translitit-engine/lib/translitit-engine.js":"iqGBd"}],"8KA6J":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "table", ()=>table);
@@ -720,6 +654,72 @@ exports.export = function(dest, destName, get) {
         enumerable: true,
         get: get
     });
+};
+
+},{}],"iqGBd":[function(require,module,exports) {
+/* global module */ "use strict";
+/**
+ * Generate a transliteration function from a given transliteration
+ * table object.
+ *
+ * @param [Object] table
+ * @return [Function] function that transliterates its input
+ */ module.exports = function(table) {
+    var keys, specialCases, singleLetter, searchPattern, lookupTable, i = 0;
+    // If no transliteration table is given, return a function that will
+    // return the input.
+    if (!table) return function(subject) {
+        return subject;
+    };
+    // Function used by the resulting replace function
+    lookupTable = function(input) {
+        return input in table ? table[input] : input;
+    };
+    // Fetch and sort the keys in the translitteration table object, to
+    // ensure the longest keys in the table is first in the array. Then
+    // it will find the position of the first one-letter index and split
+    // the keys into single letter indexes and longer 'specialCases.'
+    keys = Object.keys(table).sort(function(a, b) {
+        return b.length - a.length;
+    });
+    for(; keys[i]; i += 1){
+        if (keys[i].length === 1) break; // first one-letter index has been found, break out
+    }
+    specialCases = keys.slice(0, i).join("|");
+    singleLetter = keys.slice(i).join("");
+    keys = undefined; // reset keys
+    // Compile a regular expression using the keys found in the given
+    // translitteration object.
+    //
+    // specialCases are joined together with a pipe; `|`
+    // singleLetters joined together and wrapped in square brackets so
+    // that the resulting regular expressing have the following format:
+    //
+    //     /aa|bb|cc|[abc]/g
+    //
+    // This should create a working regular expression that will look
+    // for every key in the transliteration table.
+    searchPattern = new RegExp([
+        specialCases,
+        singleLetter ? "[" + singleLetter + "]" : ""
+    ].join(singleLetter && specialCases ? "|" : ""), "g");
+    /**
+     * Search for occurrences of entries in the translitteration table
+     * and replace these with their corresponding values.
+     *
+     * @param [String] subject to transliterate.
+     * @return [String] transliterated string
+     */ return function(subject) {
+        // input sanity check, we expect a string
+        if (typeof subject !== "string") {
+            // Try to run toString, if it exist
+            if (subject && typeof subject.toString === "function") subject = subject.toString();
+            else return "";
+        }
+        // Replace letters in the input using the lookup table and the
+        // compiled search pattern.
+        return subject.replace(searchPattern, lookupTable);
+    };
 };
 
 },{}]},["2mNKm","6rimH"], "6rimH", "parcelRequiref978")
