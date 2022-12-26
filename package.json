@@ -1,4 +1,5 @@
 {
+  "homepage": "http://adrozdenko.github.io//ua_latin_prudeus",
   "name": "UKRAINIAN_LATYNKA_PRUDEUS",
   "version": "1.0.0",
   "description": "This app transforms ukrainian cyrilics text in to latin transcripted text proposed by Maksym Prudeus",
@@ -7,12 +8,14 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "deploy": "gh-pages -d build",
   },
   "dependencies": {
     "translitit-engine": "0.1.0"
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "parcel": "^2.8.2"
   }
 }
